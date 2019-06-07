@@ -127,7 +127,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="question10"> Sometimes im Hot and Sometimes i am cold </label>
+                <label for="question10"> Sometimes i'm Hot and Sometimes i am cold </label>
                 <select class="form-control" id="question10">
                     <option value="empty"></option>
                     <option value="1">1</option>
@@ -138,3 +138,84 @@
                 </select>
             </div>
         </form>      
+
+
+
+        <div class="row">
+                <button id="submit" type="submit" class="btn btn-lg btn-success">Submit</button>
+            </div>
+            <div id="friendModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h2 class="modal-title">Your new BFF</h2>
+                        </div>
+                        <div class="modal-body">
+                            <h3 class="friendName"></h3>
+                            <img id="friendPhoto" src="#" style="width:200px; height:200px;">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    
+        <footer class="page-footer font-small fixed-bottom">
+            <div class="footer-copyright text-center py-3">
+                <a href="/api/friends">Friend API</a>
+                <span>|</span>
+                <a href="https://github.com/laylajooya/friend-finder">GitHub</a>
+            </div>
+        </footer>
+    
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+        <script type="text/javascript">
+            $("#submit").on("click", function(event) {
+                event.preventDefault();
+                var valid = true;
+                
+                if($("#name").val() === "" || $("#photo").val() === ""){
+                    valid = false;
+                } else if($("#question1").val() === "empty" || $("#question2").val() === "empty" || $("#question3").val() === "empty" || $("#question4").val() === "empty" || $("#question5").val() === "empty" || $("#question6").val() === "empty" || $("#question7").val() === "empty" || $("#question8").val() === "empty" || $("#question9").val() === "empty" || $("#question10").val() === "empty") {
+                    valid = false;
+                }
+                
+                if(valid === true) {
+                    var newFriend = {
+                        name: $("#name").val().trim(),
+                        photo: $("#photo").val().trim(),
+                        scores: [
+                            $("#question1").val(),
+                            $("#question2").val(),
+                            $("#question3").val(),
+                            $("#question4").val(),
+                            $("#question5").val(),
+                            $("#question6").val(),
+                            $("#question7").val(),
+                            $("#question8").val(),
+                            $("#question9").val(),
+                            $("#question10").val()
+                        ]
+                    };
+                    var currentURl = window.location.origin;
+                    $.post(currentURl + "/api/friends", newFriend, function(data){
+                        $(".friendName").text(data.name);
+                        $("#friendPhoto").attr("src", data.photo);
+                        $("#friendModal").modal("toggle");
+                    });
+                } else {
+                    alert("Survey is incomplete!");
+                }
+            });
+        </script>
+    </body>
+    </html>
+
+        
