@@ -1,0 +1,15 @@
+    
+body {
+    background-color: rgb(245, 242, 175);
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.container {
+
+}
+
+#bt {
+    background-color: orange;
+    font-family: 'Courier New', Courier, monospace;
+}
