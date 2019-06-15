@@ -1,6 +1,6 @@
     
 body {
-    background-color: rgb(245, 242, 175);
+    background-color:blueviolet;
     padding: 20px;
     margin: 0 auto;
 }
@@ -10,6 +10,6 @@ body {
 }
 
 #bt {
-    background-color: orange;
+    background-color: magenta;
     font-family: 'Courier New', Courier, monospace;
 }
