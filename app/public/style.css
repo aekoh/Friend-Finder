@@ -1,6 +1,6 @@
     
 body {
-    background-color:blueviolet;
+    background-color:#ffe8d5(231, 231, 231);
     padding: 20px;
     margin: 0 auto;
 }
@@ -12,4 +12,8 @@ body {
 #bt {
     background-color: magenta;
     font-family: 'Courier New', Courier, monospace;
+}
+
+.smallColor {
+    color: magenta;
 }
