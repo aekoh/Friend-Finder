@@ -1,3 +1,5 @@
+// I am creating Templated Friends data 
+
 var friends = [
     {
         name: "Stark",

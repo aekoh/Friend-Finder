@@ -17,7 +17,7 @@ app.use('/', express.static(path.join(__dirname, 'app/public')))
 // The below points our server to a series of "route" files.
 //  "map" of how to respond when users visit or request data from various URLs.
 // ================================================================================
-
+// I am linking in my html and api routes
 require("./app/routing/apiRoutes")(app);
 require("./app/routing/htmlRoutes")(app);
 
